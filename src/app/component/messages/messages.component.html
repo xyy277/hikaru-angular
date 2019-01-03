@@ -1,0 +1,15 @@
+<!-- clear：both 清除浮动效果 -->
+<hr style="clear: both">
+<h2>Messagess</h2>
+<div *ngIf="messageService.messages.length==0">
+  暂无消息
+</div>
+<div *ngIf="messageService.messages.length">
+  <button class="clear"
+  (click)="messageService.clear()"> clear </button>
+  <div *ngFor="let msg of messageService.messages">
+    <!--常用管道之 日期转型-->
+    <!--{{msg | date:'yyyy-MM-dd HH:mm:ss'}}-->
+    <span [innerHTML]="msg.value | html"></span>
+  </div>
+</div>

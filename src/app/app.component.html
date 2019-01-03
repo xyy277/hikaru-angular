@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+  <a routerLink="/kafka">kafka</a>
+  <a routerLink="/excel">excel</a>
+  <div style="margin-bottom: 100px">
+    <table>
+      <thead style="text-align: center">
+        <input class="col-1-4" style="border-radius: 10px; width: 50px;height: 20px;" name="click" value="click" type="button" (click)="stop();">
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="cpu" *ngFor="let url of this.urls">
+              <img style="" src="{{url}}">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>

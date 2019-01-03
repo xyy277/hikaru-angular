@@ -1,0 +1,4 @@
+
+interface Lock {
+  status: any;
+}
