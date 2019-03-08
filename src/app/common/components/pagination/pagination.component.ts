@@ -10,6 +10,7 @@ export class PaginationComponent implements DoCheck {
   @Input() curPage = 1;
   @Input() totalNum = 0;
   @Input() pageSize = 20;
+  pageNum = 1;
   @Input() skipStatus = true; // 是否显示跳页输入框
   @Output() changeCurPage: EventEmitter<Number> = new EventEmitter(); // 子组件向父组件广播事件，触发改变当前页面的事件
   pageList: any;
@@ -46,6 +47,7 @@ export class PaginationComponent implements DoCheck {
         }
       }
     }
+    this.pageNum =  Math.ceil(this.totalNum / (this.pageSize * 1.0));
   }
 
   changePage(pageNo) {

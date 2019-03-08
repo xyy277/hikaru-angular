@@ -16,7 +16,7 @@ export class UserManager implements OnInit {
   pageConfig: any;
   page = new Pagination();
   params = {
-    keyword: null
+    name: null
   };
   labelList = [
     '姓名',
@@ -35,7 +35,6 @@ export class UserManager implements OnInit {
 
   ngOnInit() {
     const self = this;
-    self.count();
     self.getPageData(1);
   }
 
@@ -48,12 +47,17 @@ export class UserManager implements OnInit {
       totalNum: self.dataCount,
       curPage: 1
     };
+    return self.dataCount;
   }
 
-  getPageData(curPageNo) {
+  async getPageData(curPageNo) {
     this.page.pageIndex = curPageNo;
+    await this.count();
     this.page.pageSize = 20;
-    const sorts = [];
+    if (this.dataCount < this.page.pageSize) {
+      this.page.pageSize = this.dataCount;
+    }
+      const sorts = [];
     sorts.push('name');
     this.page.sorts = sorts;
     this.page.order = 'DESC';
@@ -71,7 +75,6 @@ export class UserManager implements OnInit {
         success = reps.success;
       });
     if (success) {
-      this.count();
       this.getPageData(this.page.pageIndex);
     }
   }
@@ -89,9 +92,14 @@ export class UserManager implements OnInit {
       });
   }
 
+  search(name) {
+    this.userModel.name = name;
+    this.getPageData(1);
+  }
+
   dateSearch(date) {
     const self = this;
-    self.count();
-    self.getPageData(this.page.pageIndex);
+    this.userModel.optTime = date;
+    self.getPageData(1);
   }
 }

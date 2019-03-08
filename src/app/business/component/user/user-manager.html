@@ -1,6 +1,6 @@
 <div class="table-page">
   <div class="table-search-bar">
-    <search (search)="search($event)" [palceholder]="'请输入要查询的姓名'" [keyword]="params.keyword"></search>
+    <search (search)="search($event)" [palceholder]="'请输入要查询的姓名'" [keyword]="params.name"></search>
     <div class="data-picker-box"><date-picker [date]="date" (search)="dateSearch($event)"></date-picker></div>
     <a class="default-btn" routerLink="/user/add">添加</a>
   </div>
