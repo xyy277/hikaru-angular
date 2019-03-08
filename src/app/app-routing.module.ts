@@ -1,28 +1,67 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HeroesComponent} from './component/heroes/heroes.component';
-import {DashboardComponent} from './component/dashboard/dashboard.component';
-import { HeroDetailComponent } from './component/hero-detail/hero-detail.component';
-import {KafkaComponent} from './component/kafka/kafka.component';
-import {ExcelComponent} from './component/excel/excel.component';
 
-// 路由定义
+// pages
+import {TablePage} from './pages/table/table.page';
+import {TableDetailPage} from './pages/table/detail/detail.page';
+import {ChartComponent} from './pages/chart/chart.page';
+import {TabPage} from './pages/tab/tab.page';
+import {AnimationPage} from './pages/animation/animation.page';
+import {DocumentPage} from './pages/document/document.page';
+import {FormPage} from './pages/form/form.page';
+import {LoginPage} from './pages/login/login.page';
+import {UserManager} from './business/component/user/user-manager';
+import {UserManagerDetail} from './business/component/user/user-detail/user-detail';
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // 添加默认路由，重定向到仪表盘
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'kafka', component: KafkaComponent},
-  { path: 'excel', component: ExcelComponent},
-  { path: 'detail/:id', component: HeroDetailComponent }, // path 中( :id ) 是一个占位符，表示某个特定的id
+  {
+    path: 'table',
+    children: [
+      {
+        path: 'basic_table', component: TablePage
+      },
+      {
+        path: 'table_detail', component: TableDetailPage
+      }
+    ]
+  },
+  {
+    path: 'chart', component: ChartComponent
+  },
+  {
+    path: 'tab', component: TabPage
+  },
+  {
+    path: 'animation', component: AnimationPage
+  },
+  {
+    path: 'document', component: DocumentPage
+  },
+  {
+    path: 'form', component: FormPage
+  },
+  {
+    path: 'login', component: LoginPage
+  },
+  {
+    path: 'user',
+    children: [
+      {
+        path: 'list', component: UserManager
+      },
+      {
+        path: 'detail/:id', component: UserManagerDetail
+      }
+    ]
+  },
+  {path: '', redirectTo: 'document', pathMatch: 'full'},
+  {path: '**', redirectTo: 'document', pathMatch: 'full'}
 ];
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes), // 首先初始化路由器，开始监听浏览器中的地址变化
-    // forRoot() 须在应用的顶级配置这个路由器方法，它会提供所需服务的提供商和指令，还会基于浏览器的当前url执行首次导航
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })
-
 export class AppRoutingModule {
-
 }

@@ -1,28 +1,33 @@
-# AngularTourOfHeroes
+# 极简Angular管理后台
+---
+Pages
+- [x] 表格
+- [x] 图表
+- [x] 表单
+- [x] 标签页
+- [x] 富文本（支持内联样式）
+- [x] 上传文件&图片处理
+- [x] 单/复选框
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
+Components
+- [x] 导航栏（顶部、侧边）
+- [x] 面包屑导航
+- [x] 下拉框（级联、搜索匹配）
+- [x] 搜索框
+- [x] 模态框
+- [x] 按钮（默认、安全、危险、警告、不可用）
+- [x] 标签输入框
+- [x] loading
 
-## Development server
+Directives
+- [x] tooltip
+- [x] animation
+- [x] validate
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Services
+- [ ] message（tip、alert，默认、安全、危险、警告，可点击关闭）
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+// Others
+bug记录：侧边菜单栏折叠时，鼠标移动展开子菜单时，子菜单会缩一下再出现；
+日历组件点击年月报错：TypeError: rxjs.fromEvent is not a function
+        at SlimScrollDirective.initWheel
