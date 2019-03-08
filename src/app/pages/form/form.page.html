@@ -1,0 +1,201 @@
+<div class="form-page">
+  <div class="form-part">
+    <div class="form-box">
+      <div class="form-group">
+        <label>姓名</label>
+        <div class="form-content">
+          <input type="text" [(ngModel)]="user.name"
+                 validate [rule]="rules.name" [validateValue]="user.name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>年龄</label>
+        <div class="form-content">
+          <input type="number" [(ngModel)]="user.age"
+                 validate [rule]="rules.age" [validateValue]="user.age">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>性别</label>
+        <div class="form-content">
+          <div class="form-radio">
+            <radio [name]="'sex'" [value]="'female'" [model]="user.sex" [(ngModel)]="user.sex" ngDefaultControl></radio>女
+            <radio [name]="'sex'" [value]="'male'" [model]="user.sex" [(ngModel)]="user.sex" ngDefaultControl></radio>男
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>兴趣爱好</label>
+        <div class="form-content">
+          <div class="form-checkbox" *ngFor="let hobby of hobbyList;let i=index">
+            <checkbox (changeCheckStatus)="changeStatus($event, i)" [checkboxSize]="20"
+                      [checkStatus]="hobby.checkStatus"
+                      [checkLabel]="hobby.desc"
+                      [checkDisabled]="false"
+                      [checkboxColor]="'black'"
+                      [checkboxBorderColor]="'#20B2AA'"
+                      [checkboxBg]="'#fff'"></checkbox>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>毕业院校</label>
+        <div class="form-content">
+          <select-input [keyword]="user.school" [list]="schoolList" [label]="'name'" [placeholder]="'联想输入'"
+                        (getInputValue)="selectSchool($event)"></select-input>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>个性标签</label>
+        <div class="form-content">
+          <tag [tagList]="user.tagList" placeholder="添加标签"></tag>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label></label>
+        <div class="form-content form-btn">
+          <button class="default-btn" (click)="resetForm()">重置</button>
+          <button class="confirm-btn" validate [validateType]="'submit'" [submitValue]="user" (submit)="submitForm($event)"
+                  [validateRules]="rules">
+            确认
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-part">
+    <div class="form-box">
+      <div class="upload-box">
+        <input type="file" accept="image/*" (change)="selectedFileOnChanged($event)"/>
+        打开本地图片
+      </div>
+      <div style="margin-left:30px;float: left;">
+        <button class="default-btn" (click)="submitUpload()">上传裁剪图片</button>
+      </div>
+      <div *ngFor="let item of uploader.queue">
+        {{item.progress + '%'}}
+      </div>
+
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1/1"
+        [resizeToWidth]="128"
+        format="jpeg"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (loadImageFailed)="imageLoadFailed()"
+        style="max-height: 330px;"
+        [style.display]="cropperReady ? null : 'none'"
+      ></image-cropper>
+
+      <img *ngIf="croppedImage" [src]="croppedImage" class="cropper-img"/>
+
+    </div>
+  </div>
+  <div class="form-part">
+    <div class="form-box">
+      <jodit-editor
+        (onResize)="initEditor($event)"
+        (onChange)="changeEditor($event)"
+        [config]="{
+        zIndex:1000,
+        buttons: editorConfig.buttons,
+        buttonsMD: editorConfig.buttons,
+        buttonsSM: editorConfig.buttons,
+        buttonsXS: editorConfig.buttons,
+        askBeforePasteHTML: false,
+        askBeforePasteFromWord: true,
+        language: 'zh_cn',
+        showTooltip: false,
+        width: 400,
+        height: 660}"></jodit-editor>
+      <div class="jodit-editor-upload">
+        <input type="file" accept="image/*" id="uploader" ng2FileSelect [uploader]="uploader"
+               (change)="jodiEditorUpload($event)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-part">
+    <div class="form-box">
+      <div>富文本内容：</div>
+      <div style="height: 639px;overflow-y: auto;">
+        <div id="richContent"></div>
+      </div>
+    </div>
+  </div>
+  <div class="form-part">
+    <div class="form-box">
+      <div class="form-content flex-box">
+        <div class="btn-ms">尺寸</div>
+        <div class="btn-ms">btn-ms</div>
+        <div class="btn-ls">btn-ls</div>
+        <div class="btn-xls">btn-xls</div>
+      </div>
+      <div class="form-content flex-box">
+        <div class="btn-ms">btn-default</div>
+        <button class="btn-default btn-ms">默认</button>
+        <button class="btn-default btn-ls">默认</button>
+        <button class="btn-default btn-xls">默认</button>
+      </div>
+      <div class="form-content flex-box">
+        <div class="btn-ms">btn-disabled</div>
+        <button class="btn-disabled btn-ms">失效</button>
+        <button class="btn-disabled btn-ls">失效</button>
+        <button class="btn-disabled btn-xls">失效</button>
+      </div>
+      <div class="form-content flex-box">
+        <div class="btn-ms">btn-warning</div>
+        <button class="btn-warning btn-ms" (click)="waning()">警告</button>
+        <button class="btn-warning btn-ls" (click)="waning()">警告</button>
+        <button class="btn-warning btn-xls" (click)="waning()">警告</button>
+      </div>
+      <div class="form-content flex-box">
+        <div class="btn-ms">btn-success</div>
+        <button class="btn-success btn-ms" (click)="success()">成功</button>
+        <button class="btn-success btn-ls" (click)="success()">成功</button>
+        <button class="btn-success btn-xls" (click)="success()">成功</button>
+      </div>
+      <div class="form-content flex-box">
+        <div class="btn-ms">btn-danger</div>
+        <button class="btn-danger btn-ms" (click)="danger()">危险</button>
+        <button class="btn-danger btn-ls" (click)="danger()">危险</button>
+        <button class="btn-danger btn-xls" (click)="danger()">危险</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-part">
+    <div class="form-box">
+      <multi-select [data]="cityList"
+                    [firstName]="'provinceName'"
+                    [secondName]="'cityName'"
+                    [thirdName]="'areaName'"
+                    [secondChild]="'cities'"
+                    [thirdChild]="'areas'"
+                    [firstLabel]="'provinceCode'"
+                    [secondLabel]="'cityCode'"
+                    [thirdLabel]="'areaCode'"
+                    (getValue)="selectCity($event)"
+                    [firstValue]="'110000'"
+                    [secondValue]="'110100'"
+                    [thirdValue]="'110102'"
+      ></multi-select>
+
+      <div style="width:100px;">
+        <multi-select [data]="hobbyList"
+                      [firstName]="'desc'"
+                      [firstLabel]="'desc'"
+                      (getValue)="selectHobby($event)"
+                      [firstValue]="'看书'"
+                      [mouseHide]="true"
+        ></multi-select>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-datepicker [(ngModel)]="date"></ng-datepicker>

@@ -1,0 +1,40 @@
+<div class="table-page">
+  <div class="table-search-bar">
+    <search (search)="search($event)" [palceholder]="'请输入要查询的姓名'" [keyword]="params.keyword"></search>
+    <div class="data-picker-box"><date-picker [date]="date" (search)="dateSearch($event)"></date-picker></div>
+  </div>
+
+  <div animation="linear-show">
+    <table class="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th *ngFor="let label of labelList;let i=index">
+          {{ label }}
+        </th>
+      </tr>
+      </thead>
+      <tbody dragula='table-bag' [dragulaModel]="data">
+      <tr *ngFor="let user of data;let i=index" class="grab">
+        <td>{{i+1}}</td>
+        <td [tooltip]="user.name" [color]="'black'" [direction]="'bottom'">{{user.name}}</td>
+        <td>{{user.age}}</td>
+        <td>{{user.online}}</td>
+        <td>{{user.optTime}}</td>
+        <td>{{user.optUser}}</td>
+        <td>
+          <switcher (switchChange)="updateUser($event, user.id)" [model]="user" [attr]="'disable'" [value]="user.disable"></switcher>
+        </td>
+        <td>
+          <!--<button (click)="alertMsg(user,i)" class="btn-default">{{"click" | translate}}</button>-->
+          <icon [name]="'delete'" [type]="'svg'" (click)="delete(user.id)" [desc]="'删除'"></icon>
+          <icon routerLink="/user/detail/{{user.id}}" [name]="'detail'" [type]="'svg'" [desc]="'详情'"></icon>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="page-row">
+      <pagination (changeCurPage)="getPageData($event)" (getCurPage)="getPage($event)" [totalNum]="pageConfig.totalNum" [curPage]="pageConfig.curPage"></pagination>
+    </div>
+  </div>
+</div>

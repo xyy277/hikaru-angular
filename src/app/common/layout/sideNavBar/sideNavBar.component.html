@@ -1,0 +1,68 @@
+<div (mouseenter)="enter()" (mouseleave)="leave()"
+     [ngStyle]="{'height': screenHeight+'px', 'width': barWidth+'px', 'left': foldStatus?50-barWidth+'px':0}"
+     class="left-navbar">
+  <div>
+    <div class="side-menu-list">
+      <div class="side-menu-avatar" *ngIf="userInfo">
+        <div *ngIf="!foldStatus">
+          <img [src]="userInfo.avatar" class="avatar">
+          <span class="nickname">{{userInfo.nickname}}</span>
+        </div>
+      </div>
+      <ng-container>
+        <div *ngFor="let menu of menuList;let i=index" class="side-menu-item-box">
+          <div class="side-menu-item" (click)="changeMenu(menu,null,i)" *ngIf="!foldStatus"
+               [ngClass]="{'side-menu-item-active':menu.path==curParent}"
+               routerLink="{{(menu.children && menu.children.length)?(menu.path+'/'+menu.defaultChildPath):menu.path}}">
+            {{menu.title}}
+          </div>
+          <!--菜单图标-->
+          <div class="side-menu-item-icon-box"
+               routerLink="{{(menu.children && menu.children.length)?(menu.path+'/'+menu.defaultChildPath):menu.path}}"
+               [ngStyle]="{'left':(foldStatus?barWidth-30+'px':'28px'),'width':foldStatus?'50px':'15px'}"
+               (mouseenter)="showChildBox(i)" (mouseleave)="hideChildBox()">
+            <div (click)="changeMenu(menu,null,i)"
+                 [ngStyle]="{
+                 'background':'url(\''+menu.icon+'\')',
+                 'background-size':'cover'}"
+                 class="side-menu-item-icon"></div>
+          </div>
+          <!--菜单图标-------------------->
+
+          <!--折叠开关-->
+          <div class="side-menu-item-switc-box" *ngIf="menu.children && menu.children.length && !foldStatus"
+               (click)="menu.showChildren=!menu.showChildren">
+            <div class="side-menu-item-switch"
+                 [ngClass]="{'side-menu-item-switch-open':menu.showChildren, 'side-menu-item-switch-close':!menu.showChildren}"></div>
+          </div>
+          <!--折叠开关------------------>
+          <div class="side-child-box" *ngIf="menu.showChildren && menu.children && menu.children.length && !foldStatus">
+            <div *ngFor="let childMenu of menu.children;let j=index"
+                 (click)="changeMenu(menu,childMenu)"
+                 [ngClass]="{'side-menu-item-active':menu.path==curParent && childMenu.path==curChild}"
+                 routerLink="{{menu.path+'/'+childMenu.path}}"
+                 class="side-child-item">{{childMenu.title}}
+            </div>
+          </div>
+
+          <!--悬浮子菜单-->
+          <!--todo bug：当左边菜单滚动时会错位-->
+          <div (mouseenter)="showChildBox(i)" (mouseleave)="hideChildBox()" *ngIf="foldStatus">
+            <div class="side-menu-item-fold" [ngStyle]="{'top':i*50+(userInfo?100:50)+'px'}"
+                 *ngIf="showChildBoxIndex==i">
+              <div *ngFor="let childMenu of menu.children;let j=index"
+                   (click)="changeMenu(menu,childMenu)"
+                   [ngClass]="{'side-menu-item-active':menu.path==curParent && childMenu.path==curChild}"
+                   routerLink="{{menu.path+'/'+childMenu.path}}"
+                   class="side-child-item">{{childMenu.title}}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div class="side-folder" (click)="flod()"
+     [ngStyle]="{'left':foldStatus?(60+'px'):(barWidth+10+'px'), 'transform':foldStatus?'rotateZ(90deg)':'', 'top': foldStatus?'3px':'5px'}"></div>

@@ -1,0 +1,17 @@
+<div class="tab-box">
+  <div class="tab-title-bar">
+    <ng-container *ngFor="let tab of tabList;let i = index">
+      <div
+        [ngClass]="{
+        'tab-title-active':i==curIndex && style!='flat',
+        'tab-title-active-flat':i==curIndex && style=='flat',
+        'tab-title': style!='flat',
+        'tab-title-flat': style=='flat'}"
+        (click)="changeCurTab(i)" *ngIf="!tab.hidden">
+        <div>
+          {{tab.title}}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

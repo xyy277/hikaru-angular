@@ -1,0 +1,59 @@
+.table {
+  width: 98%;
+  margin: 0 auto;
+  background: #fff;
+  border-style: none;
+  overflow: hidden;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.table tr:nth-child(odd) {
+  background: #eee;
+}
+
+.table th {
+  background: #dfe3eb;
+  height: 40px;
+}
+
+.table tr:hover {
+  background: #dfe3eb;
+}
+
+.table td {
+  padding: 5px 10px;
+  line-height: 30px;
+  height: 40px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.page-row {
+  width: 98%;
+  margin: 20px 1% 30px 1%;
+}
+
+.item-length {
+  max-width: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.table-search-bar {
+  padding: 5px 1% 10px 1%;
+}
+
+.grab:active {
+  cursor: move;
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+.data-picker-box {
+  display: inline-block;
+  margin-left: 30px;
+}

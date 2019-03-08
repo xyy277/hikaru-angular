@@ -1,0 +1,78 @@
+.top-bar {
+  width: 100%;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3000;
+  box-shadow: 0 2px 12px 0 #dfe3eb;
+  color: #fff;
+  font-size: 14px;
+}
+
+.top-menu-list {
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.top-menu-item {
+  width: 100px;
+  line-height: 60px;
+  text-align: center;
+  float: left;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.top-menu-item:hover {
+  background: #333;
+}
+
+.top-padding {
+  width: 100%;
+  height: 60px;
+}
+
+.top-child-box {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100px;
+  line-height: 30px;
+  background: #333;
+  padding-bottom: 5px;
+  font-size: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.top-child-item:first-child {
+  padding-top: 2px;
+}
+
+.top-child-item {
+  border-top: 1px solid #666;
+  outline: none;
+}
+
+.top-menu-item-active {
+  position: absolute;
+  top: 55px;
+  width: 100px;
+  height: 5px;
+  background: #bcc;
+}
+
+.top-child-item-active {
+  color: #ff893e;
+}

@@ -1,0 +1,217 @@
+.form-page {
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+  padding: 30px 0;
+}
+
+.form-part {
+  width: 47%;
+  margin-left: 2%;
+  margin-bottom: 30px;
+  float: left;
+  position: relative;
+}
+
+.form-box {
+  padding: 30px;
+  border-radius: 15px;
+  background: #fff;
+  clear: both;
+  min-height: 500px;
+  position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+  .form-part {
+    width: 96%;
+    margin-left: 2%;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    clear: both;
+    background: #fff;
+    border-radius: 15px;
+  }
+}
+
+.form-group {
+  width: 100%;
+  font-size: 14px;
+  clear: both;
+}
+
+.form-group label {
+  width: 14%;
+  padding-right: 6%;
+  float: left;
+  text-align: right;
+  line-height: 40px;
+  height: 40px;
+  display: block;
+  overflow: hidden;
+}
+
+.form-content {
+  width: 80%;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.form-radio {
+  margin-top: 10px;
+}
+
+.form-group input {
+  width: 95%;
+  padding: 0 2%;
+  height: 40px;
+  border: 1px solid #dfe3eb;
+  border-radius: 5px;
+}
+
+.form-btn {
+  text-align: center;
+  margin-left: -10%;
+  margin-top: 20px;
+}
+
+button, .default-btn {
+  background: #fff;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #dfe3eb;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-warning {
+  background: #FFCC66;
+  color: #fff;
+  border: 1px solid #FFCC66;
+}
+
+.btn-success {
+  background: #1FBF5B;
+  color: #fff;
+  border: 1px solid #1FBF5B;
+}
+
+.btn-danger {
+  background: #EA0000;
+  color: #fff;
+  border: 1px solid #EA0000;
+}
+
+.flex-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flex-box > button, .flex-box > div {
+  margin: 0 10px;
+}
+
+.btn-disabled {
+  background: #dfe3eb;
+}
+
+.btn-ms {
+  width: 60px;
+  font-size: 12px;
+}
+
+.btn-ls {
+  width: 120px;
+  font-size: 14px;
+}
+
+.btn-xls {
+  width: 240px;
+  font-size: 16px;
+}
+
+.default-btn:hover {
+  background: #eee;
+}
+
+.confirm-btn {
+  background: #20B2AA;
+  color: #fff;
+  margin-left: 30px;
+}
+
+.confirm-btn:hover {
+  background: #40E0D0;
+}
+
+.form-checkbox {
+  display: flex;
+  justify-content: flex-start;
+  float: left;
+  margin-right: 25px;
+  margin-top: 10px;
+}
+
+.form-checkbox-desc {
+  margin-left: 5px;
+}
+
+.upload-box {
+  padding: 0 10px;
+  height: 35px;
+  background: #1FBF5B;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  line-height: 35px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+}
+
+.upload-box:hover {
+  background: limegreen;
+}
+
+.upload-box input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.cropper-img {
+  width: 100px;
+  height: 100px;
+}
+
+.jodit_tooltip {
+  display: block !important;
+}
+
+.jodit-editor-upload {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAZBAMAAABN41qcAAAAKlBMVEX5+fkiIiKNjY3h4eHe3t6Li4uampqXl5c8PDwzMzOsrKxUVFRRUVEqKiq0Gx2BAAAAVklEQVQY02OgN+AUBIMJCBFWCBWAEGGy3gyiFJBEEsUYWBJQRGwOM3iIo4gwMLA0ChagiCh5CApKIYuwC04UFBRCFlkoKIgmoggRwedCXogvLjAMPAAANqYLG0p9oi0AAAAASUVORK5CYII=');
+  width: 30px;
+  height: 20px;
+  background-size: cover;
+  position: absolute;
+  top: 100px;
+  left: 138px;
+  z-index: 2000;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.jodit-editor-upload input {
+  opacity: 0;
+}

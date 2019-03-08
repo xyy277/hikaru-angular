@@ -1,0 +1,4 @@
+<div class="radio-box" [ngClass]="{'radio-active':value==model}">
+  <input type="radio" name="{{name}}" value="{{value}}">
+  <div class="radio-checked" *ngIf="value==model"></div>
+</div>

@@ -1,0 +1,60 @@
+<div class="table-page">
+
+  <div animation="linear-show">
+    <table class="table">
+      <thead>
+      <tr>
+        <th colspan="2">用户信息</th>
+      </tr>
+      </thead>
+      <tbody dragula='table-bag' [dragulaModel]="data">
+      <tr class="grab">
+        <label>
+          <span>
+            用户姓名
+          </span>
+        </label>
+        <td>{{userModel.name}}</td>
+      </tr>
+      <tr class="grab">
+        <label>
+          <span>
+            年龄
+          </span>
+        </label>
+        <td>{{userModel.age}}</td>
+      </tr>
+      <label>
+          <span>
+            是否在线
+          </span>
+      </label>
+        <td>{{userModel.online}}</td>
+      <tr class="grab">
+        <label>
+          <span>
+            操作时间
+          </span>
+        </label>
+        <td>{{userModel.optTime}}</td>
+      </tr>
+      <label>
+          <span>
+            操作人
+          </span>
+      </label>
+        <td>{{userModel.optUser}}</td>
+      <tr class="grab">
+        <label>
+          <span>
+            是否禁用
+          </span>
+        </label>
+        <td>
+          <switcher (switchChange)="updateStatus($event)" [model]="user" [attr]="'disable'" [value]="userModel.disable"></switcher>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

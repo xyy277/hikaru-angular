@@ -1,0 +1,28 @@
+.search-box {
+  position: relative;
+  width: 200px;
+  display: inline-block;
+}
+
+.search-input {
+  width: 180px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #dfe3e9;
+}
+
+.search-clear {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 12px;
+  color: #fff;
+  background: #ccc;
+  right: 5px;
+  font-size: 12px;
+  top: 12px;
+  z-index: 3000;
+  cursor: pointer;
+}
