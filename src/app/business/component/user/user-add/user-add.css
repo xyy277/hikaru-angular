@@ -60,7 +60,7 @@
 a {
   text-decoration: none;
 }
-a, .default-btn {
+a,button, .default-btn {
   color:black;
   background: #fff;
   border-radius: 5px;

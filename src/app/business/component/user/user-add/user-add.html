@@ -4,7 +4,7 @@
     <table class="table">
       <thead>
       <tr>
-        <th colspan="2">用户信息</th>
+        <th colspan="2">添加</th>
       </tr>
       </thead>
       <tbody dragula='table-bag'>
@@ -14,7 +14,10 @@
             用户姓名
           </span>
         </label>
-        <td>{{userModel.name}}</td>
+        <td>
+          <input type="text" [(ngModel)]="user.name"
+                 validate [rule]="rules.name" [validateValue]="user.name">
+        </td>
       </tr>
       <tr class="grab">
         <label>
@@ -22,28 +25,11 @@
             年龄
           </span>
         </label>
-        <td>{{userModel.age}}</td>
+        <td>
+          <input type="text" [(ngModel)]="user.age"
+                 validate [rule]="rules.age" [validateValue]="user.age">
+        </td>
       </tr>
-      <label>
-          <span>
-            是否在线
-          </span>
-      </label>
-        <td>{{userModel.online}}</td>
-      <tr class="grab">
-        <label>
-          <span>
-            操作时间
-          </span>
-        </label>
-        <td>{{userModel.optTime}}</td>
-      </tr>
-      <label>
-          <span>
-            操作人
-          </span>
-      </label>
-        <td>{{userModel.optUser}}</td>
       <tr class="grab">
         <label>
           <span>
@@ -51,11 +37,12 @@
           </span>
         </label>
         <td>
-          <switcher (switchChange)="updateStatus($event)" [model]="user" [attr]="'disable'" [value]="userModel.disable"></switcher>
+          <switcher (switchChange)="updateStatus($event)" [model]="user" [attr]="'disable'" [value]="user.disable"></switcher>
         </td>
       </tr>
       <tr class="grab">
         <td colspan="2" style="text-align: center" >
+          <button class="default-btn" (click)="saveUser()">保存</button>
           <a class="default-btn" routerLink="/user/list">返回</a>
         </td>
       </tr>

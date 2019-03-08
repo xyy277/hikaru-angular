@@ -10,9 +10,6 @@ import {alertService} from '../../../../common/service/alert.service';
   styleUrls: ['./user-detail.css']
 })
 export class UserManagerDetail implements OnInit {
-  params = {
-    keyword: null
-  };
   userModel: UserManagerModel = new UserManagerModel();
   id: string;
 

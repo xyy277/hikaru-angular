@@ -12,6 +12,7 @@ import {FormPage} from './pages/form/form.page';
 import {LoginPage} from './pages/login/login.page';
 import {UserManager} from './business/component/user/user-manager';
 import {UserManagerDetail} from './business/component/user/user-detail/user-detail';
+import {UserManagerAdd} from './business/component/user/user-add/user-add';
 const routes: Routes = [
   {
     path: 'table',
@@ -50,6 +51,9 @@ const routes: Routes = [
       },
       {
         path: 'detail/:id', component: UserManagerDetail
+      },
+      {
+        path: 'add', component: UserManagerAdd
       }
     ]
   },

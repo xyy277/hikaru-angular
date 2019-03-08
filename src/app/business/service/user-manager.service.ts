@@ -33,6 +33,13 @@ export class UserManagerService extends HttpService {
       .catch(this.handleError);
   }
 
+  saveUser(user: UserManagerModel): Promise<any> {
+    return this.http.post( this.serverUrl + '/user/add/', user)
+      .toPromise()
+      .then((response) => response.json())
+      .catch(this.handleError);
+  }
+
   removeUserById(id: string): Promise<any> {
     return this.http.get( this.serverUrl + '/user/remove/' + id)
       .toPromise()

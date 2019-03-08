@@ -1,3 +1,7 @@
+###安装依赖
+npm install
+###启动
+npm run start
 # 极简Angular管理后台
 ---
 Pages

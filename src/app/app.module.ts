@@ -63,6 +63,7 @@ import {UserManager} from './business/component/user/user-manager';
 import {UserManagerService} from './business/service/user-manager.service';
 import {HttpModule} from '@angular/http';
 import {UserManagerDetail} from './business/component/user/user-detail/user-detail';
+import {UserManagerAdd} from './business/component/user/user-add/user-add';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -101,7 +102,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NumberPipe,
     LengthPipe,
     UserManager,
-    UserManagerDetail
+    UserManagerDetail,
+    UserManagerAdd
   ],
   imports: [
     BrowserModule,
