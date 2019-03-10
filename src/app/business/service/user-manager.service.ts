@@ -20,7 +20,7 @@ export class UserManagerService extends HttpService {
   }
 
   getUserManagerListOnPage(user: UserManagerModel): Promise<any> {
-    return this.http.post( this.serverUrl + '/user', user)
+    return this.http.post( this.serverUrl + '/user/list', user)
       .toPromise()
       .then((response) => response.json())
       .catch(this.handleError);
