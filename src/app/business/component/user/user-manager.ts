@@ -19,6 +19,7 @@ export class UserManager implements OnInit {
     name: null
   };
   labelList = [
+    '用户名',
     '姓名',
     '年龄',
     '是否在线',

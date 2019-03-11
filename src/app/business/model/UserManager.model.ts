@@ -4,6 +4,7 @@ import {Pagination} from './Pagination';
 export class UserManagerModel extends BaseModel {
   id: string;
   name: string;
+  username: string;
   age: number;
   online: number;
   disable: boolean;

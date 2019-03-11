@@ -18,6 +18,7 @@
       <tbody dragula='table-bag' [dragulaModel]="data">
       <tr *ngFor="let user of data;let i=index" class="grab">
         <td>{{i+1}}</td>
+        <td [tooltip]="user.username" [color]="'black'" [direction]="'bottom'">{{user.username}}</td>
         <td [tooltip]="user.name" [color]="'black'" [direction]="'bottom'">{{user.name}}</td>
         <td>{{user.age}}</td>
         <td>{{user.online}}</td>

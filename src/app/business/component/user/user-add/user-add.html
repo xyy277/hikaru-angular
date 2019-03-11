@@ -11,7 +11,18 @@
       <tr class="grab">
         <label>
           <span>
-            用户姓名
+            用户名
+          </span>
+        </label>
+        <td>
+          <input type="text" [(ngModel)]="user.username"
+                 validate [rule]="rules.username" [validateValue]="user.username">
+        </td>
+      </tr>
+      <tr class="grab">
+        <label>
+          <span>
+            姓名
           </span>
         </label>
         <td>
