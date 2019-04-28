@@ -4,8 +4,10 @@
     <div class="data-picker-box"><date-picker [date]="date" (search)="dateSearch($event)"></date-picker></div>
     <a class="default-btn" routerLink="/user/add">添加</a>
   </div>
-
-  <div animation="linear-show">
+  <div *ngIf="data.length <= 0">
+    <h3 style="text-align: center">暂无数据</h3>
+  </div>
+  <div *ngIf="data.length > 0" animation="linear-show">
     <table class="table">
       <thead>
       <tr>

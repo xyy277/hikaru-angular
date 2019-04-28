@@ -64,6 +64,9 @@ import {UserManagerService} from './business/service/user-manager.service';
 import {HttpModule} from '@angular/http';
 import {UserManagerDetail} from './business/component/user/user-detail/user-detail';
 import {UserManagerAdd} from './business/component/user/user-add/user-add';
+import {ConfigService} from './business/common/service/config.service';
+import {Utilhelper} from './business/common/service/utilhelper';
+import {HttpService} from './business/service/http.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -131,7 +134,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [selfHttp, alertService, globalService, msgService, apiService, httpInterceptorProviders, {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, UserManagerService],
+  }, UserManagerService, ConfigService, Utilhelper, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

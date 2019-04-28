@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Headers, Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import {ConfigService} from '../common/service/config.service';
 
 
 @Injectable()
@@ -10,7 +11,8 @@ export class HttpService {
   protected attachDomain: string;
   protected headers: Headers;
 
-  constructor(protected http: Http ) {
+  constructor(protected http: Http,
+              protected config: ConfigService) {
     this.headers = new Headers({'content-type': 'application/json'});
   }
 
@@ -19,7 +21,13 @@ export class HttpService {
   }
 
   getDomin() {
-    this.domain = 'localhost:8888/hikaru';
+    this.domain = this.domain = location.protocol + '//' + '192.168.145.1:8888/hikaru';
+    this.config.get('hikaruServer').then(value => {
+      console.log(value);
+      if (value) {
+        this.domain = value;
+      }
+    });
     return this.domain;
   }
 

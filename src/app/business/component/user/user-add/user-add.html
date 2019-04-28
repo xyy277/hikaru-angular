@@ -22,6 +22,17 @@
       <tr class="grab">
         <label>
           <span>
+            密码
+          </span>
+        </label>
+        <td>
+          <input type="text" [(ngModel)]="user.password"
+                 validate [rule]="rules.password" [validateValue]="user.password">
+        </td>
+      </tr>
+      <tr class="grab">
+        <label>
+          <span>
             姓名
           </span>
         </label>

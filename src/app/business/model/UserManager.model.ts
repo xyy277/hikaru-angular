@@ -5,6 +5,7 @@ export class UserManagerModel extends BaseModel {
   id: string;
   name: string;
   username: string;
+  password: string;
   age: number;
   online: number;
   disable: boolean;
